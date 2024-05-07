@@ -1,3 +1,18 @@
+# build v4l2-ctl for Android
+
+为了在Android上使用v4l2-ctl，fork了该项目。目前支持了rk3588（使用ndk 21b），要支持其它平台，改下`utils/v4l2-ctl/rk3588.android.arm64v8a.cmake`即可
+
+具体改动见commit
+
+编译前需要修改`-DCMAKE_ANDROID_NDK`指向自己的NDK路径
+
+编译：
+
+```
+cd utils/v4l2-ctl
+./build.sh
+```
+
 # v4l-utils
 
 Linux utilities and libraries to handle media devices (TV devices, capture
