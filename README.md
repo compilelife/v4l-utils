@@ -13,6 +13,24 @@ cd utils/v4l2-ctl
 ./build.sh
 ```
 
+在Android上使用：
+
+首先需要取得ROOT权限，或者固件为所有用户提供了/dev/video*的读写权限。
+
+然后确定接入的摄像头是/dev/video的编号，一种方法是拔插后观察/dev/video增减情况，需要人工看。
+
+另一种是根据usb端口号查看。比如对于我的板子，可以预先知道要接入的U口（指定了）是5-1，那么：
+
+```shell
+ls $(find /sys/bus/usb/devices/5-1/ -name "video4linux")
+```
+得到：video19  video20
+
+用`v4l2-ctl -d /dev/video19 -l` 和`v4l2-ctl -d /dev/video20 -l`确认下，有输出可控参数的节点就是目标节点。
+
+最后，设置亮度：`./v4l2-ctl -d /dev/video19 -c brightness=255`
+
+
 # v4l-utils
 
 Linux utilities and libraries to handle media devices (TV devices, capture
