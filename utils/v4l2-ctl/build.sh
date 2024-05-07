@@ -1,4 +1,4 @@
-rm -rf bild
+rm -rf build
 mkdir build
 
 ROOT_PWD=$(pwd)
